@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NexFutrr Solutions — IT Services & Product Engineering</title>
+  <meta name="description" content="NexFutrr Solutions is an IT services agency delivering web & mobile apps, AI/ML, cloud & DevOps, and product engineering.">
+  <meta property="og:title" content="NexFutrr Solutions — IT Services & Product Engineering" />
+  <meta property="og:description" content="Web & mobile development, AI/ML, Cloud & DevOps, UI/UX, and SaaS product engineering." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.png" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020; --card:#111636; --muted:#9aa4bf; --brand:#6ee7ff; --brand2:#7c3aed; --text:#e5e7eb;
+      --ring: 0 0 0 8px rgba(110,231,255,.12);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 600px at 80% -10%,rgba(124,58,237,.25),transparent),
+      radial-gradient(1000px 600px at -10% 10%,rgba(110,231,255,.18),transparent),var(--bg);color:var(--text);}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#3b82f6);color:#051225;font-weight:700;box-shadow:0 10px 30px rgba(110,231,255,.25);transition:transform .12s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.secondary{background:#1f2a56;color:var(--text);box-shadow:none;border:1px solid #2a3673}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(110,231,255,.12);color:#c6f3ff;border:1px solid rgba(110,231,255,.35);font-size:12px;letter-spacing:.3px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.7);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px}
+    .logo-mark{width:36px;height:36px;border-radius:10px;background:conic-gradient(from 210deg at 50% 50%,var(--brand) 0 30%,#3b82f6 30% 60%,var(--brand2) 60% 100%);box-shadow:0 5px 20px rgba(124,58,237,.35)}
+    .menu{display:flex;gap:22px;align-items:center}
+    .menu a{color:var(--muted);font-weight:600}
+    .menu a:hover{color:#cfd7f3}
+    .mobile-toggle{display:none}
+
+    /* Hero */
+    .hero{padding:80px 0}
+    .hero-grid{display:grid;grid-template-columns: 1.2fr 1fr;gap:40px;align-items:center}
+    .headline{font-size: clamp(34px, 5vw, 58px);line-height:1.05;margin:10px 0 20px;font-weight:800}
+    .headline strong{background:linear-gradient(135deg,#e5faff,var(--brand));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .sub{color:#c9d2f6;opacity:.9;max-width:640px}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);padding:22px;border-radius:16px}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+    .kpi{background:#101633;border:1px solid #1f2758;border-radius:14px;padding:16px}
+    .kpi h3{margin:0;font-size:28px}
+    .kpi p{margin:6px 0 0;color:var(--muted);font-size:12px;letter-spacing:.3px}
+
+    /* Sections */
+    section{padding:70px 0;border-top:1px solid rgba(255,255,255,.06)}
+    .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+    .section-head h2{margin:0;font-size:32px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:linear-gradient(180deg,#0e1433,#0b112c);border:1px solid #1d2a65;border-radius:18px;padding:18px;position:relative;overflow:hidden}
+    .card:before{content:"";position:absolute;inset:-1px;border-radius:18px;background:radial-gradient(600px 200px at -10% -20%,rgba(110,231,255,.15),transparent)}
+    .card h3{margin:4px 0 8px}
+    .card p{color:#bec7e9}
+    .chip{display:inline-block;margin-top:8px;font-size:12px;color:#c6d0ff;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.4);padding:6px 10px;border-radius:999px}
+
+    /* Showcase */
+    .showcase{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
+    .mock{aspect-ratio:16/10;border-radius:18px;border:1px solid #22306c;background:linear-gradient(135deg,#0b122f,#142053);display:grid;place-items:center;color:#a9b6e9}
+
+    /* Tech stack */
+    .stack{display:flex;flex-wrap:wrap;gap:10px}
+    .stack .tag{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}
+
+    /* Testimonials */
+    .quotes{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    blockquote{margin:0;padding:18px;border-radius:16px;background:linear-gradient(180deg,#0d1330,#0a0f27);border:1px solid #1f2a5e}
+    blockquote p{margin:0 0 10px}
+    blockquote cite{color:#9fb4ff;font-style:normal;font-size:14px}
+
+    /* CTA */
+    .cta{background:linear-gradient(180deg,rgba(124,58,237,.2),rgba(59,130,246,.15));border:1px solid rgba(124,58,237,.35);padding:26px;border-radius:18px;text-align:center}
+
+    /* Footer */
+    footer{padding:50px 0;border-top:1px solid rgba(255,255,255,.08);color:#a5b0d6}
+    .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:18px}
+    .foot h4{margin:0 0 12px}
+    .foot a{color:#c7cff3}
+    .copyright{margin-top:18px;text-align:center;color:#7f8ab3}
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .hero-grid,.showcase,.quotes{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr 1fr}
+      .foot{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .menu{display:none}
+      .mobile-toggle{display:inline-flex;background:#111943;border:1px solid #243076;color:#dce6ff;padding:10px 12px;border-radius:12px}
+      .cards{grid-template-columns:1fr}
+      .kpis{grid-template-columns:1fr 1fr}
+      .foot{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>NexFutrr <span style="opacity:.7">Solutions</span></span>
+      </a>
+      <nav class="menu" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="mobile-toggle" aria-label="Open menu" onclick="toggleMobileMenu()">Menu</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="hero-grid">
+      <div>
+        <span class="tag">India • Global Delivery • ISO-ready</span>
+        <h1 class="headline">We build <strong>scalable products</strong> that ship fast and delight users.</h1>
+        <p class="sub">From MVP to enterprise scale—our teams deliver Web & Mobile Development, AI/ML, Cloud & DevOps, and UI/UX. We partner as your end‑to‑end product engineering studio.</p>
+        <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#contact" class="btn">Get a Quote</a>
+          <a href="#services" class="btn secondary">Explore Services</a>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><h3>50+</h3><p>Projects Delivered</p></div>
+          <div class="kpi"><h3>1M+</h3><p>Users Served</p></div>
+          <div class="kpi"><h3>4.9★</h3><p>Client Rating</p></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="mock" aria-hidden="true" style="height:320px">
+          <div>
+            <h3 style="margin:0 0 6px">Product Dashboard</h3>
+            <p style="margin:0;color:#9eb0ff">KPI overview • Deployments • Errors • Growth</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:12px">
+          <span class="tag">Next.js</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Python</span>
+          <span class="tag">AWS</span>
+          <span class="tag">MongoDB</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>Services</h2>
+        <a class="btn secondary" href="#contact">Start a Project</a>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3>Web & Mobile Development</h3>
+          <p>TypeScript/React/Next.js, React Native/Flutter. Performant, accessible, SEO‑ready applications.</p>
+          <span class="chip">SPA/SSR • PWA • APIs</span>
+        </article>
+        <article class="card">
+          <h3>AI/ML & Automation</h3>
+          <p>RAG, fine‑tuning, vector search, LLM agents, data pipelines to unlock intelligent experiences.</p>
+          <span class="chip">OpenAI • LangChain • Pinecone</span>
+        </article>
+        <article class="card">
+          <h3>Cloud & DevOps</h3>
+          <p>AWS/GCP, containers, CI/CD, autoscaling, observability. Secure and cost‑efficient infra.</p>
+          <span class="chip">Docker • Kubernetes • Terraform</span>
+        </article>
+        <article class="card">
+          <h3>UI/UX & Product Design</h3>
+          <p>Research‑driven design systems, prototypes, and delightful user journeys to boost conversion.</p>
+          <span class="chip">Figma • Design Systems</span>
+        </article>
+        <article class="card">
+          <h3>SaaS Product Engineering</h3>
+          <p>Multi‑tenant architecture, billing, analytics, role‑based access, and platform ops.</p>
+          <span class="chip">RBAC • Stripe • Analytics</span>
+        </article>
+        <article class="card">
+          <h3>Maintenance & Support</h3>
+          <p>SLAs, performance tuning, feature squads, and 24×7 monitoring for mission‑critical apps.</p>
+          <span class="chip">SRE • APM • Alerts</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase / Work -->
+  <section id="work">
+    <div class="container">
+      <div class="section-head">
+        <h2>Selected Work</h2>
+        <span class="tag">NDA‑friendly summaries</span>
+      </div>
+      <div class="showcase">
+        <div class="card">
+          <h3>Food Delivery Super‑App</h3>
+          <p>Consumer app, partner app, and fleet delivery with real‑time tracking and AI‑powered recommendations.</p>
+          <p class="chip">1M+ MAU • <abbr title="99.95% Uptime">99.95% Uptime</abbr></p>
+        </div>
+        <div class="card">
+          <h3>Travel B2B Platform</h3>
+          <p>Inventory ingestion, agent portals, dynamic packaging, and multilingual search with vector relevance.</p>
+          <p class="chip">Global • Multi‑tenant</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Tech -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2>Why NexFutrr</h2>
+        <span class="tag">Build fast • Scale smart • Secure by default</span>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3>Product‑first Mindset</h3>
+          <p>We align on outcomes and move with clarity—roadmaps, milestones, and measurable KPIs.</p>
+        </article>
+        <article class="card">
+          <h3>Senior‑led Squads</h3>
+          <p>Specialists in full‑stack, data, and DevOps. We embed with your team and ship continuously.</p>
+        </article>
+        <article class="card">
+          <h3>Security & Compliance</h3>
+          <p>OWASP best practices, SOC2‑friendly processes, SSO, audit trails, and role‑based access.</p>
+        </article>
+      </div>
+      <div style="margin-top:24px" class="stack">
+        <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Tailwind</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>What Clients Say</h2>
+      </div>
+      <div class="quotes">
+        <blockquote>
+          <p>“NexFutrr delivered our MVP to production in 7 weeks with outstanding quality. Their DevOps pipeline cut release times by 80%.”</p>
+          <cite>— Product Lead, FinTech</cite>
+        </blockquote>
+        <blockquote>
+          <p>“They think like owners. Clear communication, clean architecture, and predictable delivery.”</p>
+          <cite>— CTO, Consumer Platform</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="container cta">
+      <h2 style="margin:0 0 8px">Have a project in mind?</h2>
+      <p style="margin:0 0 16px;color:#d7e6ff">Share your goals and we’ll propose a plan with timelines and a transparent quote.</p>
+      <a class="btn" href="#contact">Schedule a Call</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <span class="tag">We usually reply within 24 hours</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Let’s talk</h3>
+          <p>Tell us about your product, timeline, and budget. We’ll get back with a tailored plan.</p>
+          <p style="margin-top:10px;color:#9fb3ff">Email: <a href="mailto:hello@nexfutrr.com">hello@nexfutrr.com</a><br>Phone: <a href="tel:+919999999999">+91 99999 99999</a></p>
+        </div>
+        <form class="card" onsubmit="sendContact(event)">
+          <label>Name<br><input required name="name" class="input" placeholder="Your name" /></label>
+          <label>Email<br><input required type="email" name="email" class="input" placeholder="you@company.com" /></label>
+          <label>Project Brief<br><textarea required name="brief" class="input" rows="4" placeholder="What are you building?"></textarea></label>
+          <button class="btn" type="submit">Send Message</button>
+        </form>
+        <div class="card">
+          <h3>Office</h3>
+          <p>Varanasi • Bengaluru • Remote‑first</p>
+          <p style="color:#9fb3ff">Open: Mon–Sat • 10:00–19:00 IST</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <div>
+        <div class="logo" style="margin-bottom:10px">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span>NexFutrr Solutions</span>
+        </div>
+        <p>End‑to‑end product engineering for startups and enterprises across India and beyond.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <p><a href="#about">About</a><br><a href="#work">Case Studies</a><br><a href="#services">Services</a></p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <p><a href="#services">Web & Mobile</a><br><a href="#services">AI/ML</a><br><a href="#services">Cloud & DevOps</a></p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:hello@nexfutrr.com">hello@nexfutrr.com</a><br><a href="tel:+919999999999">+91 99999 99999</a></p>
+      </div>
+    </div>
+    <p class="copyright">© <span id="year"></span> NexFutrr Solutions • All rights reserved</p>
+  </footer>
+
+  <style>
+    /* form inputs */
+    .input{width:100%;margin-top:6px;margin-bottom:12px;padding:12px 14px;border-radius:12px;background:#0b1230;border:1px solid #1c2a6b;color:#eaf1ff;outline:none}
+    .input:focus{box-shadow:var(--ring);border-color:#3aa6ff}
+    form.card{display:grid;grid-template-columns:1fr;align-content:start}
+  </style>
+
+  <script>
+    const yearEl=document.getElementById('year');if(yearEl) yearEl.textContent=new Date().getFullYear();
+    function toggleMobileMenu(){
+      const nav=document.querySelector('.menu');
+      if(!nav) return; 
+      nav.style.display=nav.style.display==='flex' ? 'none' : 'flex';
+      if(nav.style.display==='flex'){nav.style.flexDirection='column';nav.style.gap='14px';nav.style.padding='12px 0'}
+    }
+    function sendContact(e){
+      e.preventDefault();
+      const data=new FormData(e.target);
+      const body=encodeURIComponent(`Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\nBrief:\n${data.get('brief')}`);
+      window.location.href=`mailto:hello@nexfutrr.com?subject=New inquiry from ${encodeURIComponent(data.get('name'))}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
